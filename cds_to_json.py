@@ -2,6 +2,9 @@ import re
 import json
 
 
+"""Gene class
+@params: locus_tag, gene number, start base number, end base number, product name
+"""
 class Gene:
     def __init__(self, locus_tag, gene_number, start_location, end_location, product):
         self.locus_tag = locus_tag
@@ -14,17 +17,15 @@ class Gene:
         return "gene number: {0}, start: {1}, end: {2}, product: {3}".format(self.gene_number, self.start_location, self.end_location, self.product)
 
 
+
+gene_numbers = []           #list to store gene numbers
+locus_tags = []             #list to store gene locus tags
+start_numbers = []          #gene start base numbers
+end_numbers = []            #gene end base numbers         
+products = []               #protein names
+
+
 lines = []
-
-gene_numbers = []
-locus_tags = []
-start_numbers = []
-end_numbers = []
-products = []
-
-# start_location, end_location, gene_number = 0
-# product = ''
-
 with open("Barb_flat.cds") as cds:
 
     for line in cds:
@@ -33,6 +34,7 @@ with open("Barb_flat.cds") as cds:
         print(split_line)
     cds.close()
 
+# add cds data to the lists
 for line in lines:
     if line[0] == "CDS":
         if line[1] == "complement":
@@ -52,15 +54,13 @@ for line in lines:
         product_name = " ".join(line[2:])
         products.append(product_name)
 
-
+#check that all lists match the number of genes
 print(len(locus_tags), len(start_numbers), len(end_numbers), len(gene_numbers), len(products))
 
-genes = []
-for i in range(0, 98):
-    gene = Gene(locus_tags[i], gene_numbers[i], start_numbers[i], end_numbers[i], products[i])
-    genes.append(gene)
-
+#make gene objects and dump json to file
 with open('genes.json', 'w+') as file:
-    for gene in genes:
+    for i in range(0, 98):
+        gene = Gene(locus_tags[i], gene_numbers[i], start_numbers[i], end_numbers[i], products[i])
         file.write(json.dumps(gene.__dict__, indent=4))
-    file.close()
+
+file.close()
