@@ -55,6 +55,7 @@ for line in lines:
         products.append(product_name)
 
 #check that all lists match the number of genes
+assert(len(locus_tags) == len(start_numbers) == len(end_numbers) == len(gene_numbers) == len(products))
 print(len(locus_tags), len(start_numbers), len(end_numbers), len(gene_numbers), len(products))
 
 #make gene objects and dump json to file
