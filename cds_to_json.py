@@ -3,10 +3,11 @@ import json
 
 
 class Gene:
-    def __init__(self, start_location, end_location, gene_number, product):
+    def __init__(self, locus_tag, gene_number, start_location, end_location, product):
+        self.locus_tag = locus_tag
+        self.gene_number = gene_number
         self.start_location = start_location
         self.end_location = end_location
-        self.gene_number = gene_number
         self.product = product
 
     def __str__(self):
@@ -16,6 +17,7 @@ class Gene:
 lines = []
 
 gene_numbers = []
+locus_tags = []
 start_numbers = []
 end_numbers = []
 products = []
@@ -29,6 +31,7 @@ with open("Barb_flat.cds") as cds:
         split_line = re.split('\W+', line.strip())
         lines.append(split_line)
         print(split_line)
+    cds.close()
 
 for line in lines:
     if line[0] == "CDS":
@@ -39,6 +42,9 @@ for line in lines:
             start_numbers.append(line[1])
             end_numbers.append(line[2])
 
+    elif len(line) > 1 and line[1] == "locus_tag":
+        locus_tags.append(line[2])
+
     elif len(line) > 1 and line[1] == "gene":
         gene_numbers.append(line[2])
 
@@ -47,12 +53,14 @@ for line in lines:
         products.append(product_name)
 
 
-print(len(start_numbers), len(end_numbers), len(gene_numbers), len(products))
+print(len(locus_tags), len(start_numbers), len(end_numbers), len(gene_numbers), len(products))
 
 genes = []
 for i in range(0, 98):
-    gene = Gene(start_numbers[i], end_numbers[i], gene_numbers[i], products[i])
+    gene = Gene(locus_tags[i], gene_numbers[i], start_numbers[i], end_numbers[i], products[i])
     genes.append(gene)
 
-for gene in genes:
-    print(gene)
+with open('genes.json', 'w+') as file:
+    for gene in genes:
+        file.write(json.dumps(gene.__dict__))
+    file.close()

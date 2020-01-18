@@ -1,0 +1,491 @@
+{
+    "start_location": "1",
+    "end_location": "531",
+    "gene_number": "1",
+    "product": "Helix turn helix DNA binding domain protein "
+}{
+    "start_location": "528",
+    "end_location": "1067",
+    "gene_number": "2",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "1064",
+    "end_location": "1348",
+    "gene_number": "3",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "1345",
+    "end_location": "1794",
+    "gene_number": "4",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "1791",
+    "end_location": "3395",
+    "gene_number": "5",
+    "product": "Terminase "
+}{
+    "start_location": "3475",
+    "end_location": "3573",
+    "gene_number": "6",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "3573",
+    "end_location": "4022",
+    "gene_number": "7",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "4019",
+    "end_location": "4495",
+    "gene_number": "8",
+    "product": "Helix turn helix DNA binding domain protein "
+}{
+    "start_location": "4492",
+    "end_location": "4635",
+    "gene_number": "9",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "4632",
+    "end_location": "5135",
+    "gene_number": "10",
+    "product": "Polynucleotide kinase "
+}{
+    "start_location": "5272",
+    "end_location": "5586",
+    "gene_number": "11",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "5583",
+    "end_location": "7169",
+    "gene_number": "12",
+    "product": "Portal "
+}{
+    "start_location": "7166",
+    "end_location": "7519",
+    "gene_number": "13",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "7494",
+    "end_location": "9533",
+    "gene_number": "14",
+    "product": "Capsid maturation protease and MuF like fusion"
+}{
+    "start_location": "9658",
+    "end_location": "9885",
+    "gene_number": "15",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "9938",
+    "end_location": "10084",
+    "gene_number": "16",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "10195",
+    "end_location": "10398",
+    "gene_number": "17",
+    "product": "DNA binding domain protein "
+}{
+    "start_location": "10471",
+    "end_location": "11688",
+    "gene_number": "18",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "11685",
+    "end_location": "12278",
+    "gene_number": "19",
+    "product": "RNA ligase "
+}{
+    "start_location": "12278",
+    "end_location": "12421",
+    "gene_number": "20",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "12512",
+    "end_location": "14410",
+    "gene_number": "21",
+    "product": "Major capsid protein "
+}{
+    "start_location": "14500",
+    "end_location": "15312",
+    "gene_number": "22",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "15326",
+    "end_location": "15727",
+    "gene_number": "23",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "15824",
+    "end_location": "16510",
+    "gene_number": "24",
+    "product": "Major tail protein "
+}{
+    "start_location": "16659",
+    "end_location": "17429",
+    "gene_number": "25",
+    "product": "Head to tail adaptor "
+}{
+    "start_location": "17426",
+    "end_location": "17962",
+    "gene_number": "26",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "18003",
+    "end_location": "18296",
+    "gene_number": "27",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "18286",
+    "end_location": "18729",
+    "gene_number": "28",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "18775",
+    "end_location": "19368",
+    "gene_number": "29",
+    "product": "Tail assembly chaperone "
+}{
+    "start_location": "19365",
+    "end_location": "20051",
+    "gene_number": "30",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "20106",
+    "end_location": "25637",
+    "gene_number": "31",
+    "product": "Tape measure protein "
+}{
+    "start_location": "25634",
+    "end_location": "26578",
+    "gene_number": "32",
+    "product": "Minor tail protein "
+}{
+    "start_location": "26575",
+    "end_location": "28341",
+    "gene_number": "33",
+    "product": "Minor tail protein "
+}{
+    "start_location": "28389",
+    "end_location": "28937",
+    "gene_number": "34",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "28934",
+    "end_location": "30106",
+    "gene_number": "35",
+    "product": "Minor tail protein "
+}{
+    "start_location": "30106",
+    "end_location": "30318",
+    "gene_number": "36",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "30318",
+    "end_location": "30662",
+    "gene_number": "37",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "30640",
+    "end_location": "32907",
+    "gene_number": "38",
+    "product": "Minor tail protein "
+}{
+    "start_location": "32911",
+    "end_location": "33507",
+    "gene_number": "39",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "33516",
+    "end_location": "33752",
+    "gene_number": "40",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "33982",
+    "end_location": "35022",
+    "gene_number": "41",
+    "product": "Lysin A "
+}{
+    "start_location": "35048",
+    "end_location": "35500",
+    "gene_number": "42",
+    "product": "Holin or Membrane protein "
+}{
+    "start_location": "35506",
+    "end_location": "35820",
+    "gene_number": "43",
+    "product": "Membrane protein "
+}{
+    "start_location": "35817",
+    "end_location": "36053",
+    "gene_number": "44",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "36050",
+    "end_location": "36484",
+    "gene_number": "45",
+    "product": "Membrane protein "
+}{
+    "start_location": "36471",
+    "end_location": "37226",
+    "gene_number": "46",
+    "product": "Lysin B "
+}{
+    "start_location": "37283",
+    "end_location": "38179",
+    "gene_number": "47",
+    "product": "Integrase S int "
+}{
+    "start_location": "38176",
+    "end_location": "38673",
+    "gene_number": "48",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "38722",
+    "end_location": "39609",
+    "gene_number": "49",
+    "product": "Integrase Y int "
+}{
+    "start_location": "39654",
+    "end_location": "40067",
+    "gene_number": "50",
+    "product": "Immunity repressor "
+}{
+    "start_location": "40125",
+    "end_location": "40352",
+    "gene_number": "51",
+    "product": "Helix turn helix dna binding domain "
+}{
+    "start_location": "40349",
+    "end_location": "40507",
+    "gene_number": "52",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "40674",
+    "end_location": "40835",
+    "gene_number": "53",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "40852",
+    "end_location": "41124",
+    "gene_number": "54",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "41121",
+    "end_location": "41210",
+    "gene_number": "55",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "41203",
+    "end_location": "42051",
+    "gene_number": "56",
+    "product": "RecE like exonuclease "
+}{
+    "start_location": "42048",
+    "end_location": "42986",
+    "gene_number": "57",
+    "product": "RecT like ssDNA binding protein "
+}{
+    "start_location": "43032",
+    "end_location": "43430",
+    "gene_number": "58",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "43430",
+    "end_location": "43861",
+    "gene_number": "59",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "43858",
+    "end_location": "44268",
+    "gene_number": "60",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "44265",
+    "end_location": "45221",
+    "gene_number": "61",
+    "product": "Methyltransferase "
+}{
+    "start_location": "45218",
+    "end_location": "45478",
+    "gene_number": "62",
+    "product": "Helix turn helix DNA binding domain protein "
+}{
+    "start_location": "45475",
+    "end_location": "46785",
+    "gene_number": "63",
+    "product": "Helix turn helix DNA binding domain protein "
+}{
+    "start_location": "46782",
+    "end_location": "47009",
+    "gene_number": "64",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "47095",
+    "end_location": "47694",
+    "gene_number": "65",
+    "product": "RuvC like resolvase "
+}{
+    "start_location": "47691",
+    "end_location": "48119",
+    "gene_number": "66",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "48116",
+    "end_location": "48577",
+    "gene_number": "67",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "48574",
+    "end_location": "48753",
+    "gene_number": "68",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "48750",
+    "end_location": "49046",
+    "gene_number": "69",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "49043",
+    "end_location": "49366",
+    "gene_number": "70",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "49359",
+    "end_location": "49550",
+    "gene_number": "71",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "49541",
+    "end_location": "50065",
+    "gene_number": "72",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "50062",
+    "end_location": "50412",
+    "gene_number": "73",
+    "product": "Histidine triad nucleotide binding protein "
+}{
+    "start_location": "50409",
+    "end_location": "50657",
+    "gene_number": "74",
+    "product": "Nicotinamide riboside transporter "
+}{
+    "start_location": "50654",
+    "end_location": "50884",
+    "gene_number": "75",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "50881",
+    "end_location": "51072",
+    "gene_number": "76",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "51072",
+    "end_location": "51359",
+    "gene_number": "77",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "51382",
+    "end_location": "51585",
+    "gene_number": "78",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "51582",
+    "end_location": "52301",
+    "gene_number": "79",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "52298",
+    "end_location": "52693",
+    "gene_number": "80",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "52690",
+    "end_location": "53085",
+    "gene_number": "81",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "53127",
+    "end_location": "53516",
+    "gene_number": "82",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "53513",
+    "end_location": "53983",
+    "gene_number": "83",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "53980",
+    "end_location": "54156",
+    "gene_number": "84",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "54153",
+    "end_location": "55367",
+    "gene_number": "85",
+    "product": "DNA methylase "
+}{
+    "start_location": "55319",
+    "end_location": "55594",
+    "gene_number": "86",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "55591",
+    "end_location": "55893",
+    "gene_number": "87",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "55893",
+    "end_location": "56546",
+    "gene_number": "88",
+    "product": "DnaJ like chaperonin "
+}{
+    "start_location": "56539",
+    "end_location": "56790",
+    "gene_number": "89",
+    "product": "Helix turn helix dna binding protein "
+}{
+    "start_location": "56787",
+    "end_location": "56987",
+    "gene_number": "90",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "56984",
+    "end_location": "57328",
+    "gene_number": "91",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "57330",
+    "end_location": "57539",
+    "gene_number": "92",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "57536",
+    "end_location": "57883",
+    "gene_number": "93",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "57915",
+    "end_location": "58175",
+    "gene_number": "94",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "58172",
+    "end_location": "58510",
+    "gene_number": "95",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "58594",
+    "end_location": "58884",
+    "gene_number": "96",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "58884",
+    "end_location": "59219",
+    "gene_number": "97",
+    "product": "Hypothetical Protein "
+}{
+    "start_location": "59216",
+    "end_location": "59389",
+    "gene_number": "98",
+    "product": "Hypothetical Protein "
+}
