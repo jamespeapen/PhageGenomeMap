@@ -59,7 +59,7 @@ print(len(locus_tags), len(start_numbers), len(end_numbers), len(gene_numbers), 
 
 #make gene objects and dump json to file
 with open('genes.json', 'w+') as file:
-    for i in range(0, 98):
+    for i in range(0, len(gene_numbers)):
         gene = Gene(locus_tags[i], gene_numbers[i], start_numbers[i], end_numbers[i], products[i])
         file.write(json.dumps(gene.__dict__, indent=4))
 
