@@ -62,5 +62,5 @@ for i in range(0, 98):
 
 with open('genes.json', 'w+') as file:
     for gene in genes:
-        file.write(json.dumps(gene.__dict__))
+        file.write(json.dumps(gene.__dict__, indent=4))
     file.close()
