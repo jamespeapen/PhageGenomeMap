@@ -26,7 +26,9 @@ products = []               #protein names
 
 
 lines = []
-with open("Barb_flat.cds") as cds:
+filename = input("Enter file path: ")
+print(filename)
+with open(filename) as cds:
 
     for line in cds:
         split_line = re.split('\W+', line.strip())
@@ -58,8 +60,11 @@ for line in lines:
 assert(len(locus_tags) == len(start_numbers) == len(end_numbers) == len(gene_numbers) == len(products))
 print(len(locus_tags), len(start_numbers), len(end_numbers), len(gene_numbers), len(products))
 
+filename_split = re.split('W+', filename)
+new_filename = filename_split[0] + ".json"
+
 #make gene objects and dump json to file
-with open('genes.json', 'w+') as file:
+with open(new_filename, 'w+') as file:
     for i in range(0, len(gene_numbers)):
         gene = Gene(locus_tags[i], gene_numbers[i], start_numbers[i], end_numbers[i], products[i])
         file.write(json.dumps(gene.__dict__, indent=4))
