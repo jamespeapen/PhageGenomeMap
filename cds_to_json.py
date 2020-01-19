@@ -27,8 +27,9 @@ products = []               #protein names
 
 lines = []
 filename = input("Enter file path: ")
+path = 'gb_files/' + filename
 print(filename)
-with open(filename) as cds:
+with open(path) as cds:
 
     for line in cds:
         split_line = re.split('\W+', line.strip())
@@ -62,6 +63,7 @@ print(len(locus_tags), len(start_numbers), len(end_numbers), len(gene_numbers), 
 
 filename_split = re.split('W+', filename)
 new_filename = filename_split[0] + ".json"
+new_path = 'gene_jsons/' + new_filename
 
 #make gene objects and dump json to file
 with open(new_filename, 'w+') as file:
