@@ -28,7 +28,7 @@ products = []               #protein names
 lines = []
 filename = input("Enter file path: ")
 path = 'gb_files/' + filename
-print(filename)
+
 with open(path) as cds:
 
     for line in cds:
@@ -59,14 +59,15 @@ for line in lines:
 
 #check that all lists match the number of genes
 assert(len(locus_tags) == len(start_numbers) == len(end_numbers) == len(gene_numbers) == len(products))
+print("Number of genes:")
 print(len(locus_tags), len(start_numbers), len(end_numbers), len(gene_numbers), len(products))
 
-filename_split = re.split('W+', filename)
+filename_split = re.split('\W+', filename)
 new_filename = filename_split[0] + ".json"
 new_path = 'gene_jsons/' + new_filename
 
 #make gene objects and dump json to file
-with open(new_filename, 'w+') as file:
+with open(new_path, 'w+') as file:
     for i in range(0, len(gene_numbers)):
         gene = Gene(locus_tags[i], gene_numbers[i], start_numbers[i], end_numbers[i], products[i])
         file.write(json.dumps(gene.__dict__, indent=4))
