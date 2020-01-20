@@ -5,8 +5,6 @@ import json
 """Gene class
 @params: locus_tag, gene number, start base number, end base number, product name
 """
-
-
 class Gene:
     def __init__(self, locus_tag, gene_number, start_location, end_location, length, product):
         self.locus_tag = locus_tag
@@ -25,7 +23,6 @@ locus_tags = []  # list to store gene locus tags
 start_numbers = []  # gene start base numbers
 end_numbers = []  # gene end base numbers
 products = []  # protein names
-
 
 lines = []
 filename = input("Enter file path: ")
@@ -66,6 +63,7 @@ print("Number of genes:")
 print(len(locus_tags), len(start_numbers), len(
     end_numbers), len(gene_numbers), len(products))
 
+#make new filename
 filename_split=re.split('\W+', filename)
 new_filename=filename_split[0] + ".json"
 new_path='gene_jsons/' + new_filename
