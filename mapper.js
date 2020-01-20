@@ -10,5 +10,7 @@ const svg = d3
   .append("g")
   .attr("transform", "translate(" + margin.left + ", " + margin.top + ")");
 
+let genome = d3.json('gene_jsons/Barb_flat.json', function(err,data){});
 
-
+let start_locations = genome.map(d=>d['start_locations'])
+console.log(start_locations)

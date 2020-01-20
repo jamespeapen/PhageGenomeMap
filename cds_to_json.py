@@ -68,11 +68,13 @@ filename_split=re.split('\W+', filename)
 new_filename=filename_split[0] + ".json"
 new_path='gene_jsons/' + new_filename
 
-# make gene objects and dump json to file
+# make a list of gene objects and dump json to file
+genes = []
 with open(new_path, 'w+') as file:
     for i in range(0, len(gene_numbers)):
         gene=Gene(locus_tags[i], gene_numbers[i], start_numbers[i],
                   end_numbers[i], end_numbers[i] - start_numbers[i], products[i])
-        file.write(json.dumps(gene.__dict__, indent=4))
+        genes.append(gene)
 
+    file.write(json.dumps([gene.__dict__ for gene in genes]))
 file.close()
