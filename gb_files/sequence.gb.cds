@@ -1,4 +1,4 @@
-     CDS             join(154107..154466,1..18)
+     CDS             1..18
                      /gene="265"
                      /locus_tag="AVA3_265"
                      /note="gp265"
@@ -1497,7 +1497,7 @@
                      QARHHEADGPAPELFSPMMFQPGDRLDARSSLLGGEKAFINDHPLSEGEDWITAAAMQ
                      PQVVPGWVGHGYVPGHRVGLPWRDSVIPGTVTHLDGQQLGIRWDDGQHSTEEPADLRP
                      L"
-     CDS             join(70831..71343,71343..71729)
+     CDS             70831..71729
                      /gene="132"
                      /locus_tag="AVA3_132"
                      /ribosomal_slippage
@@ -2851,3 +2851,14 @@
                      /protein_id="AFL46919.1"
                      /translation="MMALVALVLSLPPIDPGLPTPPPPLPTYIVEDDGTRMQCGPNFR
                      WCWDESPRS"
+     CDS             154107..154466
+                     /gene="265"
+                     /locus_tag="AVA3_265"
+                     /note="gp265"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="hypothetical protein"
+                     /protein_id="AFL46920.1"
+                     /translation="MTIRVKIIASSSGEMFEAAKLAVDLRRRHPHLQVNQPMVDHQSA
+                     SDSESASESASERTFIVADARHVADITRRFDFGKSANQALRTAQILYEVTGDTWFVLT
+                     ERQVTTTETVFYAVHGPPEEHEL"                     
