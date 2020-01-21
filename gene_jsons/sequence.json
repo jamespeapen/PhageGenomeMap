@@ -1016,19 +1016,19 @@
         "product": "hypothetical protein "
     },
     {
-        "locus_tag": "AVA3_132",
-        "gene_number": "132",
-        "start_location": 70831,
-        "end_location": 71729,
-        "length": 898,
-        "product": "tail assembly chaperone "
-    },
-    {
         "locus_tag": "AVA3_131",
         "gene_number": "131",
         "start_location": 70831,
         "end_location": 71358,
         "length": 527,
+        "product": "tail assembly chaperone "
+    },
+    {
+        "locus_tag": "AVA3_132",
+        "gene_number": "132",
+        "start_location": 70831,
+        "end_location": 71729,
+        "length": 898,
         "product": "tail assembly chaperone "
     },
     {
