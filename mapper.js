@@ -1,6 +1,6 @@
 const margin = { top: 50, right: 50, bottom: 50, left: 30 };
 
-const width = 5000;
+const width = 10000;
 const height = 50;
 
 const svg = d3.select("svg#map-area");
@@ -18,7 +18,6 @@ let loadingIndicator = d3.select("h4#loading-indicator").text("Load file");
 d3.json("gene_jsons/Barb_flat.json").then(function(genome) {
   loadingIndicator.text("File loaded");
   console.log("Loaded");
-  console.log(genome);
   drawMap(genome);
 });
 
@@ -46,12 +45,8 @@ function drawMap(genome) {
     .data(genome)
     .enter()
     .append("rect")
-    .on("mouseover", function() {
-      console.log(d => d.product);
-    })
+    .on("mouseover", console.log(d => d.product))
     .attr("x", (d, i) => (xScale(d.start_location)))
-    // (i == 0 ? i * xScale(d.start_location) : (i-1)*xScale(d.start_location)))
-    // (i-1) * xScale(d.start_location))
     .attr("y", 0)
     .attr("width", d => xScale(d.length))
     .attr("height", "30px")
@@ -60,10 +55,8 @@ function drawMap(genome) {
     .style("opacity", 0.5);
   // .call(d3.drag().on("drag"));
 
-  console.log(genome.map(d => d.start_location));
   let xAxis = d3.axisBottom(xScale).ticks(100)
 
-  console.log("transform", "translate(0, " + height + ")");
   svg
     .append("g")
     .attr("id", "xaxis")
