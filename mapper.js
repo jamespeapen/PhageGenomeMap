@@ -45,8 +45,8 @@ function drawMap(genome) {
     .data(genome)
     .enter()
     .append("rect")
-    .on("mouseover", console.log(d => d.product))
-    .attr("x", (d, i) => (xScale(d.start_location)))
+    .attr("class", "gene-bar")
+    .attr("x", (d, i) => xScale(d.start_location))
     .attr("y", 0)
     .attr("width", d => xScale(d.length))
     .attr("height", "30px")
@@ -55,11 +55,36 @@ function drawMap(genome) {
     .style("opacity", 0.5);
   // .call(d3.drag().on("drag"));
 
-  let xAxis = d3.axisBottom(xScale).ticks(100)
+  let xAxis = d3.axisBottom(xScale).ticks(100);
 
   svg
     .append("g")
     .attr("id", "xaxis")
     .attr("transform", "translate(30, " + (height + margin.top) + ")")
     .call(xAxis);
+
+  let tooltip = d3
+    .select("#plot-area")
+    .append("div")
+    .style("position", "absolute")
+    .style("visibility", "visible")
+    .style("background-color", "white")
+    .style("border", "solid")
+    .style("border-width", "1px")
+    .style("border-radius", "5px")
+    .style("padding", "10px")
+
+  d3
+    .selectAll(".gene-bar")
+    .on("mouseover", function() {
+      return tooltip.style("visibility", "visible");
+    })
+    .on("mousemove", function() {
+      console.log(event.pageX, event.pageY)
+      return tooltip.style("top", (event.pageY)+"px").style("left",(event.pageX)+"px");
+    })
+    .on("mouseout"),
+    function() {
+      return tooltip.style("visbility", "hidden");
+    };
 }
