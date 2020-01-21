@@ -1,7 +1,7 @@
 const margin = { top: 50, right: 50, bottom: 50, left: 30 };
 
 const width = 10000;
-const height = 50;
+const height = 80;
 
 const svg = d3.select("svg#map-area");
 
@@ -45,9 +45,8 @@ function drawMap(genome) {
     .data(genome)
     .enter()
     .append("rect")
-    .on("mouseover", console.log(d => d.product))
     .attr("x", (d, i) => (xScale(d.start_location)))
-    .attr("y", 0)
+    .attr("y", (d, i) => i%2 == 0 ? 0 : 40)
     .attr("width", d => xScale(d.length))
     .attr("height", "30px")
     .style("fill", d => colorScale(d.end_location))
