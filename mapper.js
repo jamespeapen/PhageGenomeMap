@@ -15,7 +15,7 @@ svg
   .attr("transform", "translate(" + margin.left + ", " + margin.top + ")")
   .style("background-color", "skyblue");
 
-d3.json("gene_jsons/Barb_flat.json").then(function(genome) {
+d3.json("gene_jsons/sequence.json").then(function(genome) {
   loadingIndicator.text("File loaded");
   console.log("Loaded");
   drawMap(genome);
@@ -56,7 +56,7 @@ function drawMap(genome) {
     .style("opacity", 0.5);
   // .call(d3.drag().on("drag"));
 
-  let xAxis = d3.axisBottom(xScale).ticks(100);
+  let xAxis = d3.axisBottom(xScale).ticks(200);
 
   svg
     .append("g")
