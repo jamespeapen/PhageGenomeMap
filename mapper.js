@@ -15,7 +15,7 @@ svg
 
 let loadingIndicator = d3.select("h4#loading-indicator").text("Load file");
 
-d3.json("gene_jsons/sequence.json").then(function(genome) {
+d3.json("gene_jsons/Barb_flat.json").then(function(genome) {
   loadingIndicator.text("File loaded");
   console.log("Loaded");
   console.log(genome);
@@ -33,7 +33,7 @@ function drawMap(genome) {
 
   xScale = d3
     .scaleLinear()
-    .domain([0, d3.max(genome, d => d.end_location)])
+    .domain([0, d3.max(end_locations)])
     .range([0, width]);
 
   let colorScale = d3
@@ -49,7 +49,9 @@ function drawMap(genome) {
     .on("mouseover", function() {
       console.log(d => d.product);
     })
-    .attr("x", (d, i) => (i) * xScale(d.length))
+    .attr("x", (d, i) => (xScale(d.start_location)))
+    // (i == 0 ? i * xScale(d.start_location) : (i-1)*xScale(d.start_location)))
+    // (i-1) * xScale(d.start_location))
     .attr("y", 0)
     .attr("width", d => xScale(d.length))
     .attr("height", "30px")
