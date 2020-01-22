@@ -81,11 +81,13 @@ function drawMap(genome) {
     .style("padding", "5px")
 }
 
+//darken segment on mouseover
 function darken(d) {
   d3.select(this)
   .style("opacity", 1)
 }
 
+//lighten segment on mouseout
 function lighten(d) {
   d3.select(this)
   .style("opacity", 0.5)
