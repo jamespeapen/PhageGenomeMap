@@ -16,7 +16,6 @@ svg
   .attr("transform", "translate(" + margin.left + ", " + margin.top + ")")
   .style("background-color", "skyblue");
 
-info_area;
 d3.json("gene_jsons/Barb_flat.json").then(function(genome) {
   loadingIndicator.text("File loaded");
   console.log("Loaded");
@@ -61,6 +60,16 @@ function drawMap(genome) {
     .on("mouseover", darken)
     .on("mousemove", showInfo)
     .on("mouseout", lighten);
+
+  d3.select("g#plot-area")
+  .selectAll("text")
+  .data(genome)
+  .enter()
+  .append("text")
+  .attr("class", "gene-number")
+  .attr("x", (d) => xScale((d.start_location+d.length/2)-50))
+  .attr("y", (d, i) => (i % 2 == 0 ? 20 : 60))
+  .text(d => d.gene_number);
 
   let xAxis = d3.axisBottom(xScale).ticks(200);
 
