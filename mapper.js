@@ -16,7 +16,7 @@ svg
   .attr("transform", "translate(" + margin.left + ", " + margin.top + ")")
   .style("background-color", "skyblue");
 
-d3.json("gene_jsons/Barb_flat.json").then(function(genome) {
+d3.json("gene_jsons/sequence.json").then(function(genome) {
   loadingIndicator.text("File loaded");
   console.log("Loaded");
   drawMap(genome);
@@ -67,8 +67,8 @@ function drawMap(genome) {
   .enter()
   .append("text")
   .attr("class", "gene-number")
-  .attr("x", (d) => xScale((d.start_location+d.length/2)-50))
-  .attr("y", (d, i) => (i % 2 == 0 ? 20 : 60))
+  .attr("x", (d) => xScale((d.end_location + d.start_location)/2)-5)
+  .attr("y", (d, i) => (i % 2 == 0 ? -4 : 80))
   .text(d => d.gene_number);
 
   let xAxis = d3.axisBottom(xScale).ticks(200);
@@ -76,7 +76,7 @@ function drawMap(genome) {
   svg
     .append("g")
     .attr("id", "xaxis")
-    .attr("transform", "translate(30, " + (height + margin.top) + ")")
+    .attr("transform", "translate(30, " + (height + 5 + margin.top) + ")")
     .call(xAxis);
 
   let tooltip = d3
@@ -103,16 +103,16 @@ function lighten(d) {
 }
 // show tooltip with info
 function showInfo(d) {
-  d3.select("#tooltip")
-    .html(
-      "<p class = 'tooltip'> Locus tag: " +
-        d.locus_tag +
-        "</p> <p class = 'tooltip'> Product: " +
-        d.product +
-        "</p>"
-    )
-    .style("top", event.pageY + "px")
-    .style("left", event.pageX + "px");
+  // d3.select("#tooltip")
+  //   .html(
+  //     "<p class = 'tooltip'> Locus tag: " +
+  //       d.locus_tag +
+  //       "</p> <p class = 'tooltip'> Product: " +
+  //       d.product +
+  //       "</p>"
+  //   )
+  //   .style("top", event.pageY + "px")
+  //   .style("left", event.pageX + "px");
   d3.select("#info-area").html(
     "<p class = 'info'>Locus tag: " +
       d.locus_tag +
