@@ -5,7 +5,7 @@ const width = 10000;
 const height = 80;
 
 const svg = d3.select("svg#map-area");
-const info_area = d3.select("div#info-area")
+const info_area = d3.select("div#info-area");
 
 //main svg
 svg
@@ -16,7 +16,7 @@ svg
   .attr("transform", "translate(" + margin.left + ", " + margin.top + ")")
   .style("background-color", "skyblue");
 
-info_area
+info_area;
 d3.json("gene_jsons/Barb_flat.json").then(function(genome) {
   loadingIndicator.text("File loaded");
   console.log("Loaded");
@@ -41,9 +41,9 @@ function drawMap(genome) {
 
   //ordinal color scale
   let colorScale = d3
-  .scaleOrdinal()
-  .domain([0, products.length])
-  .range(d3.schemeCategory10)
+    .scaleOrdinal()
+    .domain([0, products.length])
+    .range(d3.schemeCategory10);
 
   d3.select("g#plot-area")
     .selectAll("rect")
@@ -52,7 +52,7 @@ function drawMap(genome) {
     .append("rect")
     .attr("class", "gene-bar")
     .attr("x", (d, i) => xScale(d.start_location))
-    .attr("y", (d, i) => (i % 2 == 0 ? 0 : 40))   //offset to distinguish overlapping genes
+    .attr("y", (d, i) => (i % 2 == 0 ? 0 : 40)) //offset to distinguish overlapping genes
     .attr("width", d => xScale(d.length))
     .attr("height", "30px")
     .style("fill", d => colorScale(d.end_location))
@@ -60,8 +60,8 @@ function drawMap(genome) {
     .style("opacity", 0.5)
     .on("mouseover", darken)
     .on("mousemove", showInfo)
-    .on("mouseout", lighten)
-  
+    .on("mouseout", lighten);
+
   let xAxis = d3.axisBottom(xScale).ticks(200);
 
   svg
@@ -73,33 +73,42 @@ function drawMap(genome) {
   let tooltip = d3
     .select("#map")
     .append("div")
-    .attr("id", "tooltip")  
+    .attr("id", "tooltip")
     .style("position", "absolute")
     .style("visibility", "visible")
     .style("background-color", "white")
     .style("border", "solid")
     .style("border-width", "1px")
     .style("border-radius", "5px")
-    .style("padding", "5px")
+    .style("padding", "5px");
 }
 
 //darken segment on mouseover
 function darken(d) {
-  d3.select(this)
-  .style("opacity", 1)
+  d3.select(this).style("opacity", 1);
 }
 
 //lighten segment on mouseout
 function lighten(d) {
-  d3.select(this)
-  .style("opacity", 0.5)
+  d3.select(this).style("opacity", 0.5);
 }
 // show tooltip with info
 function showInfo(d) {
   d3.select("#tooltip")
-  .html("<p class = 'tooltip'> Locus tag: " + d.locus_tag + "</p> <p class = 'tooltip'> Product: " + d.product + "</p>")
-  .style("top", (event.pageY)+"px").style("left",(event.pageX)+"px")
-  d3.select("#info-area")
-  .html("<p class = 'info'>Locus tag: " + d.locus_tag + " </p>" + "<p> Product: " + d.product)
-
+    .html(
+      "<p class = 'tooltip'> Locus tag: " +
+        d.locus_tag +
+        "</p> <p class = 'tooltip'> Product: " +
+        d.product +
+        "</p>"
+    )
+    .style("top", event.pageY + "px")
+    .style("left", event.pageX + "px");
+  d3.select("#info-area").html(
+    "<p class = 'info'>Locus tag: " +
+      d.locus_tag +
+      " </p>" +
+      "<p> Product: " +
+      d.product
+  );
 }
