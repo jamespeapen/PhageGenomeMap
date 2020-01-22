@@ -15,7 +15,7 @@ svg
   .attr("transform", "translate(" + margin.left + ", " + margin.top + ")")
   .style("background-color", "skyblue");
 
-d3.json("gene_jsons/sequence.json").then(function(genome) {
+d3.json("gene_jsons/Barb_flat.json").then(function(genome) {
   loadingIndicator.text("File loaded");
   console.log("Loaded");
   drawMap(genome);
@@ -55,8 +55,7 @@ function drawMap(genome) {
     .attr("height", "30px")
     .style("fill", d => colorScale(d.end_location))
     .style("stroke", "black")
-  // .call(d3.drag().on("drag"));
-
+  
   let xAxis = d3.axisBottom(xScale).ticks(200);
 
   svg
@@ -66,8 +65,8 @@ function drawMap(genome) {
     .call(xAxis);
 
   let tooltip = d3
-    .select("#plot-area")
-    .append("div")
+    .select("#map")
+    .append("div")  
     .style("position", "absolute")
     .style("visibility", "visible")
     .style("background-color", "white")
