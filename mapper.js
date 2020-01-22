@@ -54,7 +54,6 @@ function drawMap(genome) {
     .attr("height", "30px")
     .style("fill", d => colorScale(d.end_location))
     .style("stroke", "black")
-    .style("opacity", 0.5);
   // .call(d3.drag().on("drag"));
 
   let xAxis = d3.axisBottom(xScale).ticks(200);
