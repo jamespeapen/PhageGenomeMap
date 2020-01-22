@@ -97,9 +97,9 @@ function lighten(d) {
 // show tooltip with info
 function showInfo(d) {
   d3.select("#tooltip")
-  .html("<p> Locus tag: " + d.locus_tag + "</p> <p> Product: " + d.product + "</p>")
+  .html("<p class = 'tooltip'> Locus tag: " + d.locus_tag + "</p> <p class = 'tooltip'> Product: " + d.product + "</p>")
   .style("top", (event.pageY)+"px").style("left",(event.pageX)+"px")
   d3.select("#info-area")
-  .html("<p>Locus tag: " + d.locus_tag + " </p>" + "<p> Product: " + d.product)
+  .html("<p class = 'info'>Locus tag: " + d.locus_tag + " </p>" + "<p> Product: " + d.product)
 
 }
