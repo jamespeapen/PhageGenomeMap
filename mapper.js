@@ -84,7 +84,7 @@ function drawMap(genome) {
     .append("div")
     .attr("id", "tooltip")
     .style("position", "absolute")
-    .style("visibility", "visible")
+    .style("visibility", "hidden")
     .style("background-color", "white")
     .style("border", "solid")
     .style("border-width", "1px")
