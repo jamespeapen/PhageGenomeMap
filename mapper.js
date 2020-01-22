@@ -5,6 +5,7 @@ const width = 10000;
 const height = 80;
 
 const svg = d3.select("svg#map-area");
+const info_area = d3.select("div#info-area")
 
 //main svg
 svg
@@ -15,6 +16,7 @@ svg
   .attr("transform", "translate(" + margin.left + ", " + margin.top + ")")
   .style("background-color", "skyblue");
 
+info_area
 d3.json("gene_jsons/Barb_flat.json").then(function(genome) {
   loadingIndicator.text("File loaded");
   console.log("Loaded");
@@ -97,4 +99,7 @@ function showInfo(d) {
   d3.select("#tooltip")
   .html("<p> Locus tag: " + d.locus_tag + "</p> <p> Product: " + d.product + "</p>")
   .style("top", (event.pageY)+"px").style("left",(event.pageX)+"px")
+  d3.select("#info-area")
+  .html("<p>Locus tag: " + d.locus_tag + " </p>" + "<p> Product: " + d.product)
+
 }
