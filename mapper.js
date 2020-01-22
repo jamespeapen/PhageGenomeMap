@@ -55,6 +55,10 @@ function drawMap(genome) {
     .attr("height", "30px")
     .style("fill", d => colorScale(d.end_location))
     .style("stroke", "black")
+    .style("opacity", 0.5)
+    .on("mouseover", darken)
+    .on("mousemove", showInfo)
+    .on("mouseout", lighten)
   
   let xAxis = d3.axisBottom(xScale).ticks(200);
 
@@ -66,26 +70,29 @@ function drawMap(genome) {
 
   let tooltip = d3
     .select("#map")
-    .append("div")  
+    .append("div")
+    .attr("id", "tooltip")  
     .style("position", "absolute")
     .style("visibility", "visible")
     .style("background-color", "white")
     .style("border", "solid")
     .style("border-width", "1px")
     .style("border-radius", "5px")
-    .style("padding", "10px")
+    .style("padding", "5px")
+}
 
-  d3
-    .selectAll(".gene-bar")
-    .on("mouseover", function() {
-      return tooltip.style("visibility", "visible");
-    })
-    .on("mousemove", function() {
-      console.log(event.pageX, event.pageY)
-      return tooltip.style("top", (event.pageY)+"px").style("left",(event.pageX)+"px");
-    })
-    .on("mouseout"),
-    function() {
-      return tooltip.style("visbility", "hidden");
-    };
+function darken(d) {
+  d3.select(this)
+  .style("opacity", 1)
+}
+
+function lighten(d) {
+  d3.select(this)
+  .style("opacity", 0.5)
+}
+// show tooltip with info
+function showInfo(d) {
+  d3.select("#tooltip")
+  .html("<p> Locus tag: " + d.locus_tag + "\n" + "Product: " + d.product + "</p>")
+  .style("top", (event.pageY)+"px").style("left",(event.pageX)+"px")
 }
