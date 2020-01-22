@@ -16,7 +16,15 @@ svg
   .attr("transform", "translate(" + margin.left + ", " + margin.top + ")")
   .style("background-color", "skyblue");
 
-info_area;
+function loadFile() {
+  let reader = new FileReader();
+  let file = document.querySelector("input[type=file]").files[0];
+  if (file) {
+    reader.readAsText(file);
+    d3.json(file).then(function(geno) {console.log("json read")}
+    console.log("file read")
+  }
+}
 d3.json("gene_jsons/Barb_flat.json").then(function(genome) {
   loadingIndicator.text("File loaded");
   console.log("Loaded");
