@@ -37,10 +37,11 @@ function drawMap(genome) {
     .domain([0, d3.max(end_locations)])
     .range([0, width]);
 
+  //ordinal color scale
   let colorScale = d3
-    .scaleSequential()
-    .domain([0, d3.max(end_locations)])
-    .interpolator(d3.interpolateRainbow);
+  .scaleOrdinal()
+  .domain([0, products.length])
+  .range(d3.schemeCategory10)
 
   d3.select("g#plot-area")
     .selectAll("rect")
