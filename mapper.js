@@ -21,9 +21,10 @@ function loadFile() {
   let file = document.querySelector("input[type=file]").files[0];
   if (file) {
     reader.readAsText(file);
-    d3.json(file).then(function(geno) {console.log("json read")}
+    d3.json(file).then(function(geno) {console.log("json read")
     console.log("file read")
-  }
+    })
+}
 }
 d3.json("gene_jsons/Barb_flat.json").then(function(genome) {
   loadingIndicator.text("File loaded");
@@ -70,12 +71,22 @@ function drawMap(genome) {
     .on("mousemove", showInfo)
     .on("mouseout", lighten);
 
+  d3.select("g#plot-area")
+    .selectAll("text")
+    .data(genome)
+    .enter()
+    .append("text")
+    .attr("class", "gene-number")
+    .attr("x", d => xScale((d.end_location + d.start_location) / 2) - 5)
+    .attr("y", (d, i) => (i % 2 == 0 ? -4 : 80))
+    .text(d => d.gene_number);
+
   let xAxis = d3.axisBottom(xScale).ticks(200);
 
   svg
     .append("g")
     .attr("id", "xaxis")
-    .attr("transform", "translate(30, " + (height + margin.top) + ")")
+    .attr("transform", "translate(30, " + (height + 5 + margin.top) + ")")
     .call(xAxis);
 
   let tooltip = d3
@@ -83,7 +94,7 @@ function drawMap(genome) {
     .append("div")
     .attr("id", "tooltip")
     .style("position", "absolute")
-    .style("visibility", "visible")
+    .style("visibility", "hidden")
     .style("background-color", "white")
     .style("border", "solid")
     .style("border-width", "1px")
@@ -102,6 +113,7 @@ function lighten(d) {
 }
 // show tooltip with info
 function showInfo(d) {
+  console.log(event.pageY)
   d3.select("#tooltip")
     .html(
       "<p class = 'tooltip'> Locus tag: " +
@@ -110,13 +122,7 @@ function showInfo(d) {
         d.product +
         "</p>"
     )
-    .style("top", event.pageY + "px")
+    .style("visibility", "visible")
+    .style("top", event.pageY < 140 ? event.pageY - 120 + "px" : event.pageY + 80 + "px")
     .style("left", event.pageX + "px");
-  d3.select("#info-area").html(
-    "<p class = 'info'>Locus tag: " +
-      d.locus_tag +
-      " </p>" +
-      "<p> Product: " +
-      d.product
-  );
 }
