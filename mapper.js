@@ -1,7 +1,7 @@
 //margins
 const margin = { top: 50, right: 50, bottom: 50, left: 30 };
 
-const width = 10000;
+const width = document.body.clientWidth;
 const height = 80;
 
 const svg = d3.select("svg#map-area");
@@ -80,13 +80,22 @@ function drawMap(genome) {
     .on("mouseout", lighten)
     .call(zoom);
 
- 
-  xAxis = d3.axisBottom(xScale).ticks(100);
+  d3.select("g#plot-area")
+    .selectAll("text")
+    .data(genome)
+    .enter()
+    .append("text")
+    .attr("class", "gene-number")
+    .attr("x", d => xScale((d.end_location + d.start_location) / 2) - 5)
+    .attr("y", (d, i) => (i % 2 == 0 ? -4 : 80))
+    .text(d => d.gene_number);
+
+  let xAxis = d3.axisBottom(xScale).ticks(100);
 
   axis = svg
     .append("g")
     .attr("id", "xaxis")
-    .attr("transform", "translate(30, " + (height + margin.top) + ")")
+    .attr("transform", "translate(30, " + (height + 5 + margin.top) + ")")
     .call(xAxis);
 
   let tooltip = d3
@@ -94,7 +103,7 @@ function drawMap(genome) {
     .append("div")
     .attr("id", "tooltip")
     .style("position", "absolute")
-    .style("visibility", "visible")
+    .style("visibility", "hidden")
     .style("background-color", "white")
     .style("border", "solid")
     .style("border-width", "1px")
@@ -113,23 +122,18 @@ function lighten(d) {
 }
 // show tooltip with info
 function showInfo(d) {
-  // d3.select("#tooltip")
-  //   .html(
-  //     "<p class = 'tooltip'> Locus tag: " +
-  //       d.locus_tag +
-  //       "</p> <p class = 'tooltip'> Product: " +
-  //       d.product +
-  //       "</p>"
-  //   )
-  //   .style("top", event.pageY + "px")
-  //   .style("left", event.pageX + "px");
-  d3.select("#info-area").html(
-    "<p class = 'info'>Locus tag: " +
-      d.locus_tag +
-      " </p>" +
-      "<p> Product: " +
-      d.product
-  );
+  console.log(event.pageY)
+  d3.select("#tooltip")
+    .html(
+      "<p class = 'tooltip'> Locus tag: " +
+        d.locus_tag +
+        "</p> <p class = 'tooltip'> Product: " +
+        d.product +
+        "</p>"
+    )
+    .style("visibility", "visible")
+    .style("top", event.pageY < 140 ? event.pageY - 120 + "px" : event.pageY + 80 + "px")
+    .style("left", event.pageX + "px");
 }
 
 let zoom = d3
@@ -155,4 +159,8 @@ function updateChart() {
     .attr("width", function(d) {
       return newXScale(d.end_location) - newXScale(d.start_location);
     });
+
+  plotArea.selectAll("text.gene-number")
+  .attr("x", newXScale((d.end_location + d.start_location) / 2) - 5)
+  .attr("y", )
 }
