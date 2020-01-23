@@ -16,8 +16,7 @@ svg
   .attr("transform", "translate(" + margin.left + ", " + margin.top + ")")
   .style("background-color", "skyblue");
 
-info_area;
-d3.json("gene_jsons/Barb_flat.json").then(function(genome) {
+d3.json("gene_jsons/sequence.json").then(function(genome) {
   loadingIndicator.text("File loaded");
   console.log("Loaded");
   drawMap(genome);
@@ -62,12 +61,22 @@ function drawMap(genome) {
     .on("mousemove", showInfo)
     .on("mouseout", lighten);
 
+  d3.select("g#plot-area")
+    .selectAll("text")
+    .data(genome)
+    .enter()
+    .append("text")
+    .attr("class", "gene-number")
+    .attr("x", d => xScale((d.end_location + d.start_location) / 2) - 5)
+    .attr("y", (d, i) => (i % 2 == 0 ? -4 : 80))
+    .text(d => d.gene_number);
+
   let xAxis = d3.axisBottom(xScale).ticks(200);
 
   svg
     .append("g")
     .attr("id", "xaxis")
-    .attr("transform", "translate(30, " + (height + margin.top) + ")")
+    .attr("transform", "translate(30, " + (height + 5 + margin.top) + ")")
     .call(xAxis);
 
   let tooltip = d3
@@ -75,7 +84,7 @@ function drawMap(genome) {
     .append("div")
     .attr("id", "tooltip")
     .style("position", "absolute")
-    .style("visibility", "visible")
+    .style("visibility", "hidden")
     .style("background-color", "white")
     .style("border", "solid")
     .style("border-width", "1px")
@@ -102,13 +111,7 @@ function showInfo(d) {
         d.product +
         "</p>"
     )
-    .style("top", event.pageY + "px")
+    .style("visibility", "visible")
+    .style("top", event.pageY + 80 + "px")
     .style("left", event.pageX + "px");
-  d3.select("#info-area").html(
-    "<p class = 'info'>Locus tag: " +
-      d.locus_tag +
-      " </p>" +
-      "<p> Product: " +
-      d.product
-  );
 }

@@ -5,3 +5,8 @@ p.tooltip {
 .info {
     font-size: 1em;
 }
+
+text.gene-number {
+    font-size: 0.5em;
+    text-align: left;
+}
