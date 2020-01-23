@@ -71,7 +71,7 @@ function drawMap(genome) {
     .attr("y", (d, i) => (i % 2 == 0 ? -4 : 80))
     .text(d => d.gene_number);
 
-  let xAxis = d3.axisBottom(xScale).ticks(200);
+  let xAxis = d3.axisBottom(xScale).ticks(100);
 
   svg
     .append("g")
