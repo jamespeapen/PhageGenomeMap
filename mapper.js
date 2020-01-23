@@ -123,6 +123,6 @@ function showInfo(d) {
         "</p>"
     )
     .style("visibility", "visible")
-    .style("top", event.pageY < 140 ? event.pageY - 120 + "px" : event.pageY + 80 + "px")
+    .style("top", event.pageY < 230 ? event.pageY - 120 + "px" : event.pageY + 80 + "px")
     .style("left", event.pageX + "px");
 }
