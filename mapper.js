@@ -1,7 +1,7 @@
 //margins
 const margin = { top: 50, right: 50, bottom: 50, left: 30 };
 
-const width = 5000;
+const width = 10000;
 const height = 80;
 
 const svg = d3.select("svg#map-area");
@@ -16,8 +16,9 @@ svg
   .attr("transform", "translate(" + margin.left + ", " + margin.top + ")")
   .style("background-color", "skyblue");
 
-let plotArea = d3.select("g#plot-area");
-d3.json("gene_jsons/Barb_flat.json").then(function(genome) {
+let plotArea = d3.select("g#plot-area")
+
+d3.json("gene_jsons/sequence.json").then(function(genome) {
   loadingIndicator.text("File loaded");
   console.log("Loaded");
   drawMap(genome);
@@ -29,6 +30,7 @@ loadingIndicator.text("Loading");
 
 let xScale;
 let xAxis;
+let axis
 
 //x axis scale
 function drawMap(genome) {
@@ -48,13 +50,15 @@ function drawMap(genome) {
     .domain([0, products.length])
     .range(d3.schemeCategory10);
 
+    d3.select("div#map")
+    .call(zoom)
   // plotArea
   //   .append("rect")
   //   .attr("id", "zoom-box")
   //   .attr("width", width)
   //   .attr("height", height)
   //   .style("fill", "skyblue")
-  //   .style("opacity", 1)
+  //   .style("opacity", 0)
   //   .style("pointer-events", "all")
   //   .call(zoom);
 
@@ -76,9 +80,10 @@ function drawMap(genome) {
     .on("mouseout", lighten)
     .call(zoom);
 
+ 
   xAxis = d3.axisBottom(xScale).ticks(100);
 
-  svg
+  axis = svg
     .append("g")
     .attr("id", "xaxis")
     .attr("transform", "translate(30, " + (height + margin.top) + ")")
@@ -108,16 +113,16 @@ function lighten(d) {
 }
 // show tooltip with info
 function showInfo(d) {
-  d3.select("#tooltip")
-    .html(
-      "<p class = 'tooltip'> Locus tag: " +
-        d.locus_tag +
-        "</p> <p class = 'tooltip'> Product: " +
-        d.product +
-        "</p>"
-    )
-    .style("top", event.pageY + "px")
-    .style("left", event.pageX + "px");
+  // d3.select("#tooltip")
+  //   .html(
+  //     "<p class = 'tooltip'> Locus tag: " +
+  //       d.locus_tag +
+  //       "</p> <p class = 'tooltip'> Product: " +
+  //       d.product +
+  //       "</p>"
+  //   )
+  //   .style("top", event.pageY + "px")
+  //   .style("left", event.pageX + "px");
   d3.select("#info-area").html(
     "<p class = 'info'>Locus tag: " +
       d.locus_tag +
@@ -130,19 +135,18 @@ function showInfo(d) {
 let zoom = d3
   .zoom()
   .scaleExtent([1, 20])
-  .extent([0, 0], [width, height])
-  // .on("zoom", updateChart)
-  .on("zoom", function() {
-    console.log(this)
-    console.log(d3.event.transform);
-    svg.attr("transform", d3.event.transform)
-  });
+  .extent([[0, 0], [width, height]])
+  .on("zoom", updateChart)
+  // .on("zoom", function() {
+  //   console.log(d3.event.transform);
+  //   svg.attr("transform", d3.event.transform)
+  // });
 
 let newXScale;
 function updateChart() {
   newXScale = d3.event.transform.rescaleX(xScale);
   console.log(newXScale(100));
-  xAxis.call(d3.axisBottom(newXScale));
+  axis.call(d3.axisBottom(newXScale));
   plotArea
     .selectAll("rect.gene-bar")
     .attr("x", function(d) {
