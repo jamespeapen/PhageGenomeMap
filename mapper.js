@@ -103,6 +103,7 @@ function lighten(d) {
 }
 // show tooltip with info
 function showInfo(d) {
+  console.log(event.pageY)
   d3.select("#tooltip")
     .html(
       "<p class = 'tooltip'> Locus tag: " +
@@ -112,6 +113,6 @@ function showInfo(d) {
         "</p>"
     )
     .style("visibility", "visible")
-    .style("top", event.pageY + 80 + "px")
+    .style("top", event.pageY < 140 ? event.pageY - 120 + "px" : event.pageY + 80 + "px")
     .style("left", event.pageX + "px");
 }
