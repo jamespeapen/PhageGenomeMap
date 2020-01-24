@@ -146,7 +146,7 @@ function showInfo(d) {
     .style("visibility", "visible")
     .style(
       "top",
-      event.pageY < 230 ? event.pageY - 120 + "px" : event.pageY + 80 + "px"
+      event.pageY < 240 ? event.pageY - 120 + "px" : event.pageY + 80 + "px"
     )
     .style("left", event.pageX + "px");
 }
