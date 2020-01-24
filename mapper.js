@@ -2,7 +2,7 @@
 const margin = { top: 50, right: 50, bottom: 50, left: 30 };
 
 const width = 10000;
-const height = 80;
+const height = 130;
 
 const svg = d3.select("svg#map-area");
 const info_area = d3.select("div#info-area");
@@ -66,9 +66,9 @@ function drawMap(genome) {
     .append("rect")
     .attr("class", "gene-bar")
     .attr("x", (d, i) => xScale(d.start_location))
-    .attr("y", (d, i) => (i % 2 == 0 ? 0 : 40)) //offset to distinguish overlapping genes
+    .attr("y", (d, i) => (i % 2 == 0 ? 0 : 50)) //offset to distinguish overlapping genes
     .attr("width", d => xScale(d.length))
-    .attr("height", "30px")
+    .attr("height", "40px")
     .style("fill", d => colorScale(d.end_location))
     .style("stroke", "black")
     .style("opacity", 0.5)
@@ -84,8 +84,8 @@ function drawMap(genome) {
     .enter()
     .append("text")
     .attr("class", "gene-number")
-    .attr("x", d => xScale((d.end_location + d.start_location) / 2) - 5)
-    .attr("y", (d, i) => (i % 2 == 0 ? -4 : 80))
+    .attr("x", d => xScale((d.end_location + d.start_location) / 2) - 9)
+    .attr("y", (d, i) => (i % 2 == 0 ? -4 : 105))
     .text(d => d.gene_number);
 
 
