@@ -17,20 +17,22 @@ svg
   .style("background-color", "skyblue");
 
 function loadFile() {
-  let reader = new FileReader();
-  let file = document.querySelector("input[type=file]").files[0];
-  if (file) {
-    reader.readAsText(file);
-    d3.json(file).then(function(geno) {console.log("json read")
-    console.log("file read")
-    })
+  d3.json("gene_jsons/" + input.node().value).then(function(genome) {
+    loadingIndicator.text("File loaded");
+    console.log("Loaded");
+    svg
+      .selectAll("g")
+      .selectAll("*")
+      .remove();
+    drawMap(genome);
+  });
 }
-}
-d3.json("gene_jsons/Barb_flat.json").then(function(genome) {
-  loadingIndicator.text("File loaded");
-  console.log("Loaded");
-  drawMap(genome);
-});
+
+input = d3.select("select");
+console.log(input.node().value);
+input.on("change", loadFile);
+
+loadFile();
 
 let loadingIndicator = d3.select("h4#loading-indicator").text("Load file");
 console.log("Loading");
@@ -42,17 +44,20 @@ function drawMap(genome) {
   let end_locations = genome.map(d => d.end_location);
   let gene_lengths = genome.map(d => d.length);
   let products = genome.map(d => d.product);
-
+  
   let xScale = d3
-    .scaleLinear()
-    .domain([0, d3.max(end_locations)])
-    .range([0, width]);
-
+  .scaleLinear()
+  .domain([0, d3.max(end_locations)])
+  .range([0, width]);
+  let xAxis = d3.axisBottom(xScale).ticks(200);
+  
   //ordinal color scale
   let colorScale = d3
-    .scaleOrdinal()
-    .domain([0, products.length])
-    .range(d3.schemeCategory10);
+  .scaleOrdinal()
+  .domain([0, products.length])
+  .range(d3.schemeCategory10);
+
+  console.log("done2")
 
   d3.select("g#plot-area")
     .selectAll("rect")
@@ -71,7 +76,9 @@ function drawMap(genome) {
     .on("mousemove", showInfo)
     .on("mouseout", lighten);
 
-  d3.select("g#plot-area")
+    console.log("done2")
+
+    d3.select("g#plot-area")
     .selectAll("text")
     .data(genome)
     .enter()
@@ -81,7 +88,6 @@ function drawMap(genome) {
     .attr("y", (d, i) => (i % 2 == 0 ? -4 : 80))
     .text(d => d.gene_number);
 
-  let xAxis = d3.axisBottom(xScale).ticks(200);
 
   svg
     .append("g")
@@ -113,7 +119,7 @@ function lighten(d) {
 }
 // show tooltip with info
 function showInfo(d) {
-  console.log(event.pageY)
+  console.log(event.pageY);
   d3.select("#tooltip")
     .html(
       "<p class = 'tooltip'> Locus tag: " +
@@ -123,6 +129,9 @@ function showInfo(d) {
         "</p>"
     )
     .style("visibility", "visible")
-    .style("top", event.pageY < 230 ? event.pageY - 120 + "px" : event.pageY + 80 + "px")
+    .style(
+      "top",
+      event.pageY < 230 ? event.pageY - 120 + "px" : event.pageY + 80 + "px"
+    )
     .style("left", event.pageX + "px");
 }

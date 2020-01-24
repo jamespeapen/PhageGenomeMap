@@ -11,9 +11,12 @@
 </head>
 
 <body>
-    <h5>Select a file</h5>
-    <input type="file" onchange="loadFile()">
-    <h4 id="loading-indicator"></h4>
+    <h5>Select a phage file</h5>
+    <select id = "phage-selection" name="phages">
+        <option value="Barb_flat.json">Barb</option>
+        <option value="sequence.json">Ava</option>
+    </select>
+    <h4 id="loading-indicator"> </h4>
     <div id="map">
         <svg id="map-area">
         </svg>
