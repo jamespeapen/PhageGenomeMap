@@ -10,3 +10,8 @@ text.gene-number {
     font-size: 0.7em;
     text-align: left;
 }
+
+#credits {
+    font-size: 0.9em;
+    color: #333333
+}
