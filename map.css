@@ -15,3 +15,7 @@ text.gene-number {
     font-size: 0.9em;
     color: #333333
 }
+
+.gene-number {
+    font-weight: bold;
+}
