@@ -23,7 +23,7 @@ function loadFile() {
     svg
       .selectAll("g")
       .selectAll("*")
-      .remove();
+      .remove()
     drawMap(genome);
   });
 }
@@ -57,7 +57,6 @@ function drawMap(genome) {
   .domain([0, products.length])
   .range(d3.schemeCategory10);
 
-  console.log("done2")
 
   d3.select("g#plot-area")
     .selectAll("rect")
@@ -66,17 +65,25 @@ function drawMap(genome) {
     .append("rect")
     .attr("class", "gene-bar")
     .attr("x", (d, i) => xScale(d.start_location))
+
+    .transition()
+    .duration(400)
     .attr("y", (d, i) => (i % 2 == 0 ? 0 : 50)) //offset to distinguish overlapping genes
+    .delay((d, i) => i*5)
+
+    .style("fill", d => colorScale(d.end_location))
     .attr("width", d => xScale(d.length))
     .attr("height", "40px")
-    .style("fill", d => colorScale(d.end_location))
+
+    .transition()
+    .duration(1000)
+    .style("opacity", 0.9)
+
     .style("stroke", "black")
-    .style("opacity", 0.5)
+  d3.selectAll("rect.gene-bar")
     .on("mouseover", darken)
     .on("mousemove", showInfo)
     .on("mouseout", lighten);
-
-    console.log("done2")
 
     d3.select("g#plot-area")
     .selectAll("text")
@@ -85,7 +92,10 @@ function drawMap(genome) {
     .append("text")
     .attr("class", "gene-number")
     .attr("x", d => xScale((d.end_location + d.start_location) / 2) - 9)
+    .transition()
+    .duration(400)
     .attr("y", (d, i) => (i % 2 == 0 ? -4 : 105))
+    .delay((d, i) => i*5)
     .text(d => d.gene_number);
 
 
@@ -93,7 +103,7 @@ function drawMap(genome) {
     .append("g")
     .attr("id", "xaxis")
     .attr("transform", "translate(30, " + (height + 5 + margin.top) + ")")
-    .call(xAxis);
+    .call(xAxis)
 
   let tooltip = d3
     .select("#map")
@@ -110,12 +120,14 @@ function drawMap(genome) {
 
 //darken segment on mouseover
 function darken(d) {
-  d3.select(this).style("opacity", 1);
+  d3.select(this).style("opacity", 1)
+  .style("stroke-width", 2);
 }
 
 //lighten segment on mouseout
 function lighten(d) {
-  d3.select(this).style("opacity", 0.5);
+  d3.select(this).style("opacity", 0.9)
+  .style("stroke-width", 1);
 }
 // show tooltip with info
 function showInfo(d) {
@@ -123,8 +135,11 @@ function showInfo(d) {
   d3.select("#tooltip")
     .html(
       "<p class = 'tooltip'> Locus tag: " +
-        d.locus_tag +
-        "</p> <p class = 'tooltip'> Product: " +
+        d.locus_tag + "</p>" + 
+        "<p class = 'tooltip'> Starting base: " +
+        d.start_location + "</p>" + 
+        "<p class = 'tooltip'> Ending base: " + d.end_location + "</p>" +
+        "<p class = 'tooltip'> Product: " +
         d.product +
         "</p>"
     )
