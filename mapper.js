@@ -2,7 +2,7 @@
 const margin = { top: 50, right: 50, bottom: 50, left: 30 };
 
 const width = 10000;
-const height = 130;
+const height = 110;
 
 const svg = d3.select("svg#map-area");
 const info_area = d3.select("div#info-area");
