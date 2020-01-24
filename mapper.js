@@ -1,7 +1,7 @@
 //margins
 const margin = { top: 50, right: 50, bottom: 50, left: 30 };
 
-const width = 10000;
+const width = document.body.clientWidth-50;
 const height = 110;
 
 const svg = d3.select("svg#map-area");
@@ -34,13 +34,11 @@ function loadFile() {
 }
 
 input = d3.select("select");
-console.log(input.node().value);
 input.on("change", loadFile);
 
 loadFile();
 
 let loadingIndicator = d3.select("h4#loading-indicator").text("Load file");
-console.log("Loading");
 loadingIndicator.text("Loading");
 
 //x axis scale
@@ -58,7 +56,7 @@ function drawMap(genome) {
   .scaleLinear()
   .domain([0, d3.max(end_locations)])
   .range([0, width]);
-  let xAxis = d3.axisBottom(xScale).ticks(200);
+  let xAxis = d3.axisBottom(xScale).ticks(10)
   
   //ordinal color scale
   let colorScale = d3
@@ -102,12 +100,13 @@ function drawMap(genome) {
     .enter()
     .append("text")
     .attr("class", "gene-number")
-    .attr("x", d => xScale((d.end_location + d.start_location) / 2) - 9)
+    .style("font-size", "0.0em")
+    .attr("x", d => xScale((d.end_location + d.start_location) / 2)-5)
     .transition()
     .duration(400)
     .attr("y", (d, i) => (i % 2 == 0 ? -4 : 105))
     .delay((d, i) => i*5)
-    .text(d => d.gene_number);
+    .text(d => d.gene_number)
 
 
   axis = svg
@@ -142,7 +141,6 @@ function lighten(d) {
 }
 // show tooltip with info
 function showInfo(d) {
-  console.log(event.pageY);
   d3.select("#tooltip")
     .html(
       "<p class = 'tooltip'> Locus tag: " +
@@ -172,8 +170,7 @@ let zoom = d3
 function updateChart() {
   d3.selectAll("text.gene-number").remove()
   newXScale = d3.event.transform.rescaleX(xScale);
-  console.log(newXScale(100));
-  axis.call(d3.axisBottom(newXScale).ticks(100));
+  axis.call(d3.axisBottom(newXScale).ticks(2*d3.event.transform.k)); // keep ticks from crowding
   plotArea
     .selectAll("rect.gene-bar")
     .attr("x", function(d) {
@@ -190,8 +187,7 @@ function updateChart() {
     .append("text")
     .attr("class", "gene-number")
     .attr("x", d => newXScale((d.end_location + d.start_location) / 2) - 9)
-    .transition()
-    .duration(10)
     .attr("y", (d, i) => (i % 2 == 0 ? -4 : 105))
-    .text(d => d.gene_number); 
+    .text(d => d.gene_number)
+    .style("font-size", d3.event.transform.k < 1.5 ? "0.0em" : "0.6em"); // hide gene number if zoomed out
   }
