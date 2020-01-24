@@ -125,7 +125,12 @@ function drawMap(genome) {
     .style("border", "solid")
     .style("border-width", "1px")
     .style("border-radius", "5px")
-    .style("padding", "5px");
+    .style("padding", "5px")
+    .on("click", function() {
+      tooltip.style("visibility", "hidden")
+    });
+
+    plotArea.on("mouseout", function() {tooltip.style("visibility", "hidden")})
 }
 
 //darken segment on mouseover
