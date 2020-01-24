@@ -7,6 +7,8 @@ const height = 110;
 const svg = d3.select("svg#map-area");
 const info_area = d3.select("div#info-area");
 
+let data 
+
 //main svg
 svg
   .attr("width", width + margin.left + margin.right)
@@ -16,6 +18,8 @@ svg
   .attr("transform", "translate(" + margin.left + ", " + margin.top + ")")
   .style("background-color", "skyblue");
 
+plotArea = d3.select("#plot-area")
+
 function loadFile() {
   d3.json("gene_jsons/" + input.node().value).then(function(genome) {
     loadingIndicator.text("File loaded");
@@ -24,6 +28,7 @@ function loadFile() {
       .selectAll("g")
       .selectAll("*")
       .remove()
+      data = genome
     drawMap(genome);
   });
 }
@@ -39,13 +44,17 @@ console.log("Loading");
 loadingIndicator.text("Loading");
 
 //x axis scale
+let xScale
+let xAxis
+let axis
+
 function drawMap(genome) {
   let start_locations = genome.map(d => d.start_location);
   let end_locations = genome.map(d => d.end_location);
   let gene_lengths = genome.map(d => d.length);
   let products = genome.map(d => d.product);
   
-  let xScale = d3
+  xScale = d3
   .scaleLinear()
   .domain([0, d3.max(end_locations)])
   .range([0, width]);
@@ -57,6 +66,8 @@ function drawMap(genome) {
   .domain([0, products.length])
   .range(d3.schemeCategory10);
 
+  d3.select('div#map')
+  .call(zoom)
 
   d3.select("g#plot-area")
     .selectAll("rect")
@@ -99,7 +110,7 @@ function drawMap(genome) {
     .text(d => d.gene_number);
 
 
-  svg
+  axis = svg
     .append("g")
     .attr("id", "xaxis")
     .attr("transform", "translate(30, " + (height + 5 + margin.top) + ")")
@@ -150,3 +161,37 @@ function showInfo(d) {
     )
     .style("left", event.pageX + "px");
 }
+
+let zoom = d3
+  .zoom()
+  .scaleExtent([1, 20])
+  .extent([[0, 0], [width, height]])
+  .on("zoom", updateChart)
+
+
+function updateChart() {
+  d3.selectAll("text.gene-number").remove()
+  newXScale = d3.event.transform.rescaleX(xScale);
+  console.log(newXScale(100));
+  axis.call(d3.axisBottom(newXScale).ticks(100));
+  plotArea
+    .selectAll("rect.gene-bar")
+    .attr("x", function(d) {
+      return newXScale(d.start_location);
+    })
+    .attr("width", function(d) {
+      return newXScale(d.end_location) - newXScale(d.start_location);
+    });
+
+  plotArea
+    .selectAll("text")
+    .data(data)
+    .enter()
+    .append("text")
+    .attr("class", "gene-number")
+    .attr("x", d => newXScale((d.end_location + d.start_location) / 2) - 9)
+    .transition()
+    .duration(10)
+    .attr("y", (d, i) => (i % 2 == 0 ? -4 : 105))
+    .text(d => d.gene_number); 
+  }
