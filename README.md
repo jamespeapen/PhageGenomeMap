@@ -13,6 +13,6 @@ Credits:
 <li><a href="https://bl.ocks.org/mbostock">Mike Bostock's examples</a></li>
 <li><a href="https://www.d3-graph-gallery.com/">D3 Graph Gallery</a></li>
 <li><a href="https:phagesdb.org">PhagesDB</a> was the source of the phages information and genomes</li>
-<li>I used <a href="https://cgpdb.ucdavis.edu/GenBankParser/">Python GenBank Parser</a> to parse the </li>files from Genbank</li>
+<li>I used <a href="https://cgpdb.ucdavis.edu/GenBankParser/">Python GenBank Parser</a> to parse the files from Genbank</li>
 <li><a href="https://phamerator.org">Phamerator</a> for design inspiration </li>
 <li><a href="https://github.com/jamespeapen/PhageGenomeMap">Source code</a></li>
