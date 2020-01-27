@@ -94,21 +94,6 @@ function drawMap(genome) {
     .on("mousemove", showInfo)
     .on("mouseout", lighten);
 
-    // d3.select("g#plot-area")
-    // .selectAll("text")
-    // .data(genome)
-    // .enter()
-    // .append("text")
-    // .attr("class", "gene-number")
-    // .style("font-size", "0.0em")
-    // .attr("x", d => xScale((d.end_location + d.start_location) / 2)-5)
-    // .transition()
-    // .duration(400)
-    // .attr("y", (d, i) => (i % 2 == 0 ? -4 : 105))
-    // .delay((d, i) => i*5)
-    // .text(d => d.gene_number)
-
-
   axis = svg
     .append("g")
     .attr("id", "xaxis")
